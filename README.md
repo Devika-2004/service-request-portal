@@ -290,6 +290,13 @@ The application supports three user roles:
 - **Support:** Can access support features to manage and process service requests.
 - **Admin:** Can access administrative features and dashboard analytics.
 
+### Support and Admin Account Setup
+
+- Employee accounts can be registered through the application's registration page.
+- Support and Admin accounts must be created or assigned the appropriate roles directly in the database.
+- During login, users must select the correct role and provide valid credentials.
+- Access to role-specific dashboards and features is restricted according to the user's assigned role.
+
 ### Protected Routes
 
 - React protected routes restrict access to pages based on user roles.
