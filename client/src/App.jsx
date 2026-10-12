@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
+import RoleSelection from "./pages/RoleSelection";
 import Login from "./pages/Login";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import CreateRequest from "./pages/CreateRequest";
@@ -19,17 +20,36 @@ function App() {
         <Navbar />
 
         <Routes>
-
-          {/* Login */}
+          {/* Role Selection Page */}
           <Route
             path="/"
-            element={<Login />}
+            element={<RoleSelection />}
           />
+
+          {/* Employee Login */}
+          <Route
+            path="/login/employee"
+            element={<Login expectedRole="employee" />}
+          />
+
+          {/* Support Login */}
+          <Route
+            path="/login/support"
+            element={<Login expectedRole="support" />}
+          />
+
+          {/* Admin Login */}
+          <Route
+            path="/login/admin"
+            element={<Login expectedRole="admin" />}
+          />
+
           {/* Register */}
           <Route
-          path="/register"
-          element={<Register />}
+            path="/register"
+            element={<Register />}
           />
+
           {/* Employee Dashboard */}
           <Route
             path="/employee/dashboard"
@@ -55,11 +75,7 @@ function App() {
             path="/requests/:id"
             element={
               <ProtectedRoute
-                allowedRoles={[
-                  "employee",
-                  "support",
-                  "admin",
-                ]}
+                allowedRoles={["employee", "support", "admin"]}
               >
                 <RequestDetails />
               </ProtectedRoute>
@@ -80,9 +96,7 @@ function App() {
           <Route
             path="/support/dashboard"
             element={
-              <ProtectedRoute
-                allowedRoles={["support", "admin"]}
-              >
+              <ProtectedRoute allowedRoles={["support", "admin"]}>
                 <SupportDashboard />
               </ProtectedRoute>
             }
@@ -97,7 +111,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
         </Routes>
       </AuthProvider>
     </BrowserRouter>
