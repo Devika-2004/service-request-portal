@@ -4,7 +4,6 @@ import AuthContext from "../context/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
-
   const { user, logout } = useContext(AuthContext);
 
   const handleLogout = () => {
@@ -26,6 +25,10 @@ function Navbar() {
     }
   };
 
+  const goToProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <nav
       className="navbar px-3 px-md-4"
@@ -36,7 +39,6 @@ function Navbar() {
       }}
     >
       <div className="container-fluid">
-
         {/* Brand */}
         <div
           className="d-flex align-items-center"
@@ -72,7 +74,6 @@ function Navbar() {
 
         {/* Right Side */}
         <div className="d-flex align-items-center gap-2 gap-md-3">
-
           {/* User */}
           <div
             className="d-none d-sm-flex align-items-center"
@@ -117,6 +118,23 @@ function Navbar() {
             Dashboard
           </button>
 
+          {/* Profile */}
+          <button
+            type="button"
+            onClick={goToProfile}
+            className="btn btn-sm"
+            style={{
+              color: "#ffffff",
+              backgroundColor: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: "8px",
+              padding: "7px 14px",
+              fontWeight: 600,
+            }}
+          >
+            My Profile
+          </button>
+
           {/* Logout */}
           <button
             type="button"
@@ -133,7 +151,6 @@ function Navbar() {
           >
             Logout
           </button>
-
         </div>
       </div>
     </nav>

@@ -235,9 +235,7 @@ The backend provides REST APIs for authentication and service request management
 
 ### Base URL
 
-```text
 http://localhost:5000/api
-```
 
 ### Authentication APIs
 
@@ -254,10 +252,19 @@ http://localhost:5000/api
 | GET | `/requests` | Retrieve service requests |
 | GET | `/requests/:id` | Retrieve a specific request |
 | PUT | `/requests/:id` | Update a service request |
-| DELETE | `/requests/:id` | Delete or cancel a request, depending on the implementation |
+| DELETE | `/requests/:id` | Delete or cancel a request |
 | PATCH | `/requests/:id/status` | Update request status |
 | PATCH | `/requests/:id/assign` | Assign a request to a support user |
+| PATCH | `/requests/:id/escalate` | Escalate a request |
 | POST | `/requests/:id/comments` | Add a comment to a request |
+| GET | `/requests/:id/comments` | Retrieve request comments |
+| PATCH | `/requests/:id/resolution` | Add resolution notes |
+
+### User APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/users/support` | Retrieve support users |
 
 ### Authentication
 
@@ -265,11 +272,9 @@ Protected endpoints require a valid JSON Web Token (JWT) in the Authorization he
 
 Example:
 
-```text
 Authorization: Bearer <your_token>
-```
 
-The available operations depend on the user's role and the authorization rules implemented by the backend. Verify all endpoint paths and methods against the actual backend routes before publishing this documentation.
+The available operations depend on the user's role and the authorization rules implemented by the backend.
 
 ## Authentication & Authorization
 
@@ -462,10 +467,11 @@ Make sure the following software is installed:
 
 ### 1. Clone the Repository
 
-Replace `<your-repository-url>` with the URL of your GitHub repository.
+Replace https://github.com/Devika-2004/service-request-portal.git with the URL of your GitHub repository.
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Devika-2004/service-request-portal.git
+
 cd service-request-portal
 ```
 
